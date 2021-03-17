@@ -1,0 +1,20 @@
+service: my-app
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  hello:
+    handler: handler.hello
+    layers:
+      # - arn:aws:lambda:us-east-1:412511290092:layer:python-app-dependencies:1
+      - { Ref: DependancyLambdaLayer }
+layers:
+  dependancy:
+    path: layers/tools
+    compatibleRuntimes:
+      - python3.8
+    description: "Dependencies xmltodict for python functions"

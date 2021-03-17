@@ -1,0 +1,15 @@
+service: my-layers
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+
+
+layers:
+  python-app-dependencies:
+    path: layers/tools
+    compatibleRuntimes:
+      - python3.8
+    description: "Dependencies jsonpath_rw for python functions"
